@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto Uzumaki Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url('https://wallpaperaccess.com/full/185759.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8); /* Darker background for better visibility */
+            color: white;
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            position: sticky;
+            top: 0; /* Sticky Navigation */
+            z-index: 2;
+        }
+
+        .clan-logo img {
+            height: 60px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav ul li {
+            margin: 0 15px;
+        }
+
+        .nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: "Sixtyfour Convergence", sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        .nav ul li a:hover {
+            color: orange;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 1200px;
+            height: calc(100vh - 100px);
+        }
+
+        .text-area {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .profile {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile img {
+            max-width: 75%;
+        }
+
+        .text-area h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .text-area p {
+            font-size: 22px;
+        }
+
+        /* Box Layout */
+        .about {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: orange;
+            margin-bottom: 20px;
+        }
+
+        .box-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three columns */
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .box {
+            background-color: rgba(255, 165, 0, 0.8);
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .box:hover {
+            background-color: orange;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .box-content {
+            padding: 10px;
+        }
+
+        /* Center the last box */
+        .box.last-box {
+            grid-column: span 3; /* Span across three columns */
+            justify-self: center;
+            max-width: 400px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: #FF4500;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: orange;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            .nav ul li {
+                margin: 10px 0;
+            }
+
+            .content {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .profile img {
+                max-width: 100%;
+            }
+
+            .clan-logo img {
+                height: 40px;
+            }
+
+            .box-container {
+                grid-template-columns: 1fr; /* Single column on smaller screens */
+            }
+
+            .box.last-box {
+                grid-column:100%;
+                max-width: 100%;
+            }
+        }
+
+        .about-text{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="clan-logo">
+                <img src="https://www.freepnglogos.com/uploads/naruto/wahdi-twenty-seven-kumpulan-anime-naruto-adobe-22.png" alt="Naruto Logo">
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="overlay"></div>
+
+    <div class="content">
+        <div class="text-area">
+            <h1>I'm <span style="color: orange;">Naruto</span><br>and I'm a <span style="color: orange;">Shinobi</span> of Konoha</h1>
+            <p>I'm Naruto Uzumaki, and I never give up! From being an outcast in the Hidden Leaf Village to becoming its strongest ninja, my dream has always been to become Hokage. With the power of the Nine-Tails and the support of my friends, I’ll protect my village and show the world that hard work and believing in yourself can overcome any challenge!</p>
+        </div>
+        <div class="profile">
+            <img src="https://1.bp.blogspot.com/-jbXKThZiovo/UcJGNgGAOvI/AAAAAAAAARM/onWk6Vkxqxs/s1600/naruto+24.png" alt="Naruto Uzumaki Profile">
+        </div>
+    </div>
+
+    <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="box-container">
+            <div class="box">
+                <div class="box-content"><a href="family.html" class="about-text">Family</a></div>
+            </div>
+            <div class="box">
+                <div class="box-content"><a href="clan.html" class="about-text">Clan</a></div>
+            </div>
+            <div class="box">
+                <div class="box-content"> <a href="friends.html" class="about-text">Friends</a></div>
+            </div>
+            <div class="box">
+                <div class="box-content"> <a href="sensei.html" class="about-text">Sensei</a></div>
+            </div>
+            <div class="box">
+                <div class="box-content"> <a href="jutsu.html" class="about-text">Jutsu</a></div>
+            </div>
+            <div class="box">
+                <div class="box-content"><a href="mission.html" class="about-text">Missions</a></div>
+            </div>
+            <div class="box last-box">
+                <div class="box-content"><a href="kurama.html" class="about-text">kurama</a></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Naruto Uzumaki. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/naruto/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+</html>
